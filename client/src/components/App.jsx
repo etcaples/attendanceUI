@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckboxList from './CheckboxList';
+// import CheckboxList from './CheckboxList';
 import CohortAttendanceList from './CohortAttendanceList';
 
 class App extends React.Component {
@@ -10,22 +10,39 @@ class App extends React.Component {
         {
           name: 'RPT07',
           isChecked: false,
+          studentDatas: [
+            {
+              name: 'Emily',
+              timeIn: '7:34pm',
+              status: 'present',
+              // return student data in order by date
+            },
+            {
+              name: 'Sarah',
+              timeIn: null,
+              status: 'absent',
+            },
+          ],
         },
         {
           name: 'RPT08',
           isChecked: false,
+          studentDatas: [],
         },
         {
           name: 'RPT09',
           isChecked: false,
+          studentDatas: [],
         },
         {
           name: 'RPT10',
           isChecked: false,
+          studentDatas: [],
         },
         {
           name: 'RPT11',
           isChecked: false,
+          studentDatas: [],
         },
       ],
     };
@@ -39,7 +56,7 @@ class App extends React.Component {
     const { cohorts } = this.state;
     return (
       <div>
-        <CheckboxList cohorts={cohorts} />
+        {/* <CheckboxList cohorts={cohorts} /> */}
         <CohortAttendanceList cohorts={cohorts} />
       </div>
     );

@@ -7,14 +7,14 @@ const CohortAttendanceList = (props) => {
   return (
     <div>
       {
-        cohorts.map(cohort => <CohortBox cohort={cohort} />)
+        cohorts.map(cohort => <CohortBox cohort={cohort} key={`${cohort.name} + "-box"`} />)
       }
     </div>
   );
 };
 
 CohortAttendanceList.propTypes = {
-  cohorts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cohorts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CohortAttendanceList;
