@@ -6,7 +6,28 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cohorts: ['RPT07', 'RPT08', 'RPT09', 'RPT10', 'RPT11'],
+      cohorts: [
+        {
+          name: 'RPT07',
+          isChecked: false,
+        },
+        {
+          name: 'RPT08',
+          isChecked: false,
+        },
+        {
+          name: 'RPT09',
+          isChecked: false,
+        },
+        {
+          name: 'RPT10',
+          isChecked: false,
+        },
+        {
+          name: 'RPT11',
+          isChecked: false,
+        },
+      ],
     };
   }
 
