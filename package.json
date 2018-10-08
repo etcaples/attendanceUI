@@ -1,0 +1,20 @@
+{
+  "name": "attendanceUI",
+  "version": "1.0.0",
+  "description": "This is the service to benignly check current student attendance (no LOG).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etcaples/attendanceUI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etcaples/attendanceUI/issues"
+  },
+  "homepage": "https://github.com/etcaples/attendanceUI#readme"
+}
