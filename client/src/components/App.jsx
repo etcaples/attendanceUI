@@ -1,6 +1,16 @@
 import React from 'react';
-// import CheckboxList from './CheckboxList';
+import styled from 'styled-components';
+import CheckboxList from './CheckboxList';
 import CohortAttendanceList from './CohortAttendanceList';
+
+const CheckboxListContainer = styled.div`
+  border-width: 2px;
+  border: solid navy;
+  /* temporary border details ^^^^^ */
+  padding: 25px;
+  text-align: center;
+  font-size: 25px;
+`;
 
 class App extends React.Component {
   constructor() {
@@ -56,7 +66,9 @@ class App extends React.Component {
     const { cohorts } = this.state;
     return (
       <div>
-        {/* <CheckboxList cohorts={cohorts} /> */}
+        <CheckboxListContainer>
+          <CheckboxList cohorts={cohorts} />
+        </CheckboxListContainer>
         <CohortAttendanceList cohorts={cohorts} />
       </div>
     );

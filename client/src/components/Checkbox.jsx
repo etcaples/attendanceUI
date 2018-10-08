@@ -7,14 +7,14 @@ const Checkbox = (props) => {
     <div>
       <label htmlFor={cohort}>
         <input type="checkbox" />
-        {cohort}
+        {cohort.name}
       </label>
     </div>
   );
 };
 
 Checkbox.propTypes = {
-  cohort: PropTypes.string.isRequired,
+  cohort: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Checkbox;
