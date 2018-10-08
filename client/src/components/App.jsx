@@ -1,24 +1,63 @@
 import React from 'react';
-import CheckboxList from './CheckboxList';
+// import CheckboxList from './CheckboxList';
+import CohortAttendanceList from './CohortAttendanceList';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cohorts: ['RPT07', 'RPT08', 'RPT09', 'RPT10', 'RPT11'],
+      cohorts: [
+        {
+          name: 'RPT07',
+          isChecked: false,
+          studentDatas: [
+            {
+              name: 'Emily',
+              timeIn: '7:34pm',
+              status: 'present',
+              // return student data in order by date
+            },
+            {
+              name: 'Sarah',
+              timeIn: null,
+              status: 'absent',
+            },
+          ],
+        },
+        {
+          name: 'RPT08',
+          isChecked: false,
+          studentDatas: [],
+        },
+        {
+          name: 'RPT09',
+          isChecked: false,
+          studentDatas: [],
+        },
+        {
+          name: 'RPT10',
+          isChecked: false,
+          studentDatas: [],
+        },
+        {
+          name: 'RPT11',
+          isChecked: false,
+          studentDatas: [],
+        },
+      ],
     };
-    this.logHello = this.logHello.bind(this);
   }
 
-  logHello() {
-    console.log('hello is logged', this);
-  }
+  // when button is clicked, those cohorts are sent as arguments to runAttendance (NO LOG)
+
+  // then, the cohort box datas are populated
 
   render() {
     const { cohorts } = this.state;
     return (
       <div>
-        <CheckboxList cohorts={cohorts} />
+        {/* <CheckboxList cohorts={cohorts} /> */}
+        <CohortAttendanceList cohorts={cohorts} />
       </div>
     );
   }
