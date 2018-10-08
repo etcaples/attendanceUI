@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import IndivStudentInfo from './IndivStudentInfo';
+
+const StyledTable = styled.table`
+  border-collapse: collapse;
+`;
 
 const StudentDataList = (props) => {
   const { students } = props;
   return (
-    <ul>
-      {
-        students.map(student => <IndivStudentInfo student={student} />)
-      }
-    </ul>
+    <div>
+      <StyledTable>
+        {
+          students.map(student => <IndivStudentInfo student={student} />)
+        }
+      </StyledTable>
+    </div>
   );
 };
 

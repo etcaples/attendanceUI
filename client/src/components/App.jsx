@@ -12,6 +12,12 @@ const CheckboxListContainer = styled.div`
   font-size: 25px;
 `;
 
+const CohortAttendanceListContainer = styled.div`
+  border-width: 2px;
+  border: solid red;
+  /* temporary border details ^^^^^ */
+`;
+
 class App extends React.Component {
   constructor() {
     super();
@@ -69,7 +75,10 @@ class App extends React.Component {
         <CheckboxListContainer>
           <CheckboxList cohorts={cohorts} />
         </CheckboxListContainer>
-        <CohortAttendanceList cohorts={cohorts} />
+        {/* want vvvvvv to render only when button is clicked */}
+        <CohortAttendanceListContainer>
+          <CohortAttendanceList cohorts={cohorts} />
+        </CohortAttendanceListContainer>
       </div>
     );
   }
