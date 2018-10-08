@@ -4,19 +4,23 @@ import styled from 'styled-components';
 import StudentDataList from './StudentDataList';
 
 const StyledBox = styled.div`
-  border: solid orange;
-  border-width: 2px;
-  padding: 25px;
-  width: 250px;
+  border: 4px solid navy;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
   text-align: center;
-  margin: auto;
+  margin: 10px 5px;
+`;
+
+const StyledHeading = styled.h2`
+  margin-top: 0;
 `;
 
 const CohortBox = (props) => {
   const { cohort } = props;
   return (
     <StyledBox>
-      <h2>{cohort.name}</h2>
+      <StyledHeading>{cohort.name}</StyledHeading>
       <div>
         <StudentDataList students={cohort.studentDatas} />
       </div>

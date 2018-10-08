@@ -4,16 +4,14 @@ import styled from 'styled-components';
 import CohortBox from './CohortBox';
 
 const CohortBoxContainer = styled.div`
-  border-width: 2px;
-  border: solid green;
+  border: 2px solid green;
   /* temporary border details ^^^^^ */
   /* want table of names to be centered */
   /* want heading to be centered */
   padding: 25px;
   display: flex;
   align-items: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 `;
 

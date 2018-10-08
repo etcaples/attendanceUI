@@ -5,6 +5,14 @@ import IndivStudentInfo from './IndivStudentInfo';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
+  margin: 0 auto;
+`;
+
+const TableHeading = styled.th`
+  border: 2px solid pink;
+  text-align: right;
+  font-size: 20px;
+  padding: 5px;
 `;
 
 const StudentDataList = (props) => {
@@ -12,9 +20,19 @@ const StudentDataList = (props) => {
   return (
     <div>
       <StyledTable>
-        {
-          students.map(student => <IndivStudentInfo student={student} />)
-        }
+        <tbody>
+          <tr>
+            <TableHeading>
+              Name
+            </TableHeading>
+            <TableHeading>
+              Time In
+            </TableHeading>
+          </tr>
+          {
+            students.map(student => <IndivStudentInfo student={student} />)
+          }
+        </tbody>
       </StyledTable>
     </div>
   );
