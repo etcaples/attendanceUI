@@ -17,19 +17,20 @@ const StyledHeading = styled.h2`
 `;
 
 const CohortBox = (props) => {
-  const { cohort } = props;
+  const { cohort, students } = props;
   return (
     <StyledBox>
-      <StyledHeading>{cohort.name}</StyledHeading>
+      <StyledHeading>{cohort}</StyledHeading>
       <div>
-        <StudentDataList students={cohort.studentDatas} />
+        <StudentDataList students={students} />
       </div>
     </StyledBox>
   );
 };
 
 CohortBox.propTypes = {
-  cohort: PropTypes.instanceOf(Object).isRequired,
+  cohort: PropTypes.string.isRequired,
+  students: PropTypes.arrayOf(Array).isRequired,
 };
 
 export default CohortBox;
