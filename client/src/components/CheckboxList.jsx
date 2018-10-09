@@ -21,6 +21,7 @@ const CheckboxList = (props) => {
           <Checkbox
             cohort={cohort}
             handleCheckboxChange={handleCheckboxChange}
+            key={`${cohort.name}-checkbox`}
           />))
       }
       <br />
