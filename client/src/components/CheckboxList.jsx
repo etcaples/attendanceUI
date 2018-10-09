@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Checkbox from './Checkbox';
 
 const Button = styled.button`
-  background: palevioletred;
+  background: navy;
   border-radius: 3px;
   border: none;
   color: white;
@@ -13,15 +13,19 @@ const Button = styled.button`
 `;
 
 const CheckboxList = (props) => {
-  const { cohorts } = props;
+  const { cohorts, handleCheckboxChange, storeCheckedCohorts } = props;
   return (
     <div className="checkboxes">
       {
-        cohorts.map(cohort => <Checkbox cohort={cohort} />)
+        cohorts.map(cohort => (
+          <Checkbox
+            cohort={cohort}
+            handleCheckboxChange={handleCheckboxChange}
+          />))
       }
       <br />
-      <Button type="button">
-        run attendance
+      <Button type="button" onClick={() => storeCheckedCohorts()}>
+        show attendance
       </Button>
     </div>
   );
@@ -29,6 +33,8 @@ const CheckboxList = (props) => {
 
 CheckboxList.propTypes = {
   cohorts: PropTypes.arrayOf(Object).isRequired,
+  handleCheckboxChange: PropTypes.func.isRequired,
+  storeCheckedCohorts: PropTypes.func.isRequired,
 };
 
 export default CheckboxList;
