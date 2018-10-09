@@ -53,14 +53,14 @@ class App extends React.Component {
               timeJoined: '2018-10-09T00:57:45Z',
               absent: false,
             },
+          ],
+          absent: [
             {
               name: 'Sarah',
               cohort: 'RPT07',
-              timeJoined: '2018-10-09T00:57:45Z',
-              absent: false,
+              absent: true,
             },
           ],
-          absent: [],
         },
         RPT08: {
           present: [
