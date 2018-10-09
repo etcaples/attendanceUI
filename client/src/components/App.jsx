@@ -5,7 +5,12 @@ import CohortAttendanceList from './CohortAttendanceList';
 
 const CheckboxListContainer = styled.div`
   border-bottom: 4px solid navy;
-  /* temporary border details ^^^^^ */
+  padding: 25px;
+  text-align: center;
+  font-size: 25px;
+`;
+
+const TempMessage = styled.div`
   padding: 25px;
   text-align: center;
   font-size: 25px;
@@ -71,7 +76,6 @@ class App extends React.Component {
 
   storeCheckedCohorts() {
     const { cohorts } = this.state;
-    // const count = 1;
     const newArgs = [];
     for (let i = 0; i < cohorts.length; i++) {
       const curCohort = cohorts[i];
@@ -92,12 +96,12 @@ class App extends React.Component {
     const { attendanceArgs, renderedCohorts } = this.state;
     const count = 1;
     const cohortStudentInfo = Object.assign({}, renderedCohorts);
+
     // run runAttendanceDatas.js on the attendanceArgs
 
     // this vvvvvv is temporary until there are real datas
     for (let i = 0; i < attendanceArgs.length; i++) {
       if (renderedCohorts[attendanceArgs[i]] === undefined) {
-        // console.log(renderedCohorts)
         cohortStudentInfo[attendanceArgs[i]] = [];
       }
     }
@@ -127,7 +131,7 @@ class App extends React.Component {
             <CohortAttendanceList
               renderedCohorts={renderedCohorts}
               attendanceArgs={attendanceArgs}
-            />) : <br />
+            />) : <TempMessage>(Datas take about 12 seconds to load...)</TempMessage>
         }
       </div>
     );
