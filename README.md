@@ -9,6 +9,7 @@
 - connect API from main project to get real datas
 - Redux for state management
 - potentially Semantic-UI, to make main app styling cohesive
+- add ability to hide the detail boxes (so that the rest of the dashboard is not cluttered)
 
 ## Purpose
 The attendanceUI is the face of a service intended to benignly check current student attendance (no LOG) in Hack Reactor's RPT program.
