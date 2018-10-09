@@ -10,7 +10,7 @@ const StyledTable = styled.table`
 
 const TableHeading = styled.th`
   border: 2px solid navy;
-  text-align: right;
+  text-align: left;
   font-size: 20px;
   padding: 5px;
 `;
