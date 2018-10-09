@@ -13,7 +13,6 @@ const CohortBoxContainer = styled.div`
 
 const CohortAttendanceList = (props) => {
   const { renderedCohorts, attendanceArgs } = props;
-  console.log(renderedCohorts);
   return (
     <CohortBoxContainer>
       {
