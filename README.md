@@ -17,7 +17,7 @@
 ## Purpose
 The attendanceUI is the face of a service intended to benignly check current student attendance (no LOG) in Hack Reactor's RPT program.
 
-It is one part of a multifacted dashboard tool.
+It is one part of a multifaceted dashboard tool.
 
 ## How it works
 
