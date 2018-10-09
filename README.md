@@ -2,7 +2,7 @@
 
 ![screen recording of app UI](http://g.recordit.co/oHYiuwjw27.gif)
 
-## Stack
+## Stack 🥞
 - React
 - Axios
 - Node/Express
