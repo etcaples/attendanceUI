@@ -9,8 +9,6 @@ const TableCell = styled.td`
   padding: 5px;
 `;
 
-// RPT07/RPT08/RPT10
-
 const IndivStudentInfo = (props) => {
   const { student } = props;
   let timeIn = student.timeJoined || 'Absent';
@@ -32,7 +30,7 @@ const IndivStudentInfo = (props) => {
 };
 
 IndivStudentInfo.propTypes = {
-  student: PropTypes.arrayOf(String).isRequired,
+  student: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default IndivStudentInfo;

@@ -16,10 +16,6 @@ const TempMessage = styled.div`
   font-size: 25px;
 `;
 
-// real data shape:
-// {name, cohort, timeJoined, absent}
-// when a student is absent, it says absent: true, and there is no timeJoined property
-
 class App extends React.Component {
   constructor() {
     super();
@@ -49,50 +45,65 @@ class App extends React.Component {
       ],
       attendanceArgs: [],
       renderedCohorts: {
-        RPT07: [
-          {
-            name: 'Emily',
-            cohort: 'RPT07',
-            timeJoined: '2018-10-09T00:57:45Z',
-            absent: false,
-          },
-          {
-            name: 'Sarah',
-            cohort: 'RPT07',
-            timeJoined: '2018-10-09T00:57:45Z',
-            absent: false,
-          },
-        ],
-        RPT08: [
-          {
-            name: 'Robert',
-            cohort: 'RPT08',
-            timeJoined: '2018-10-09T01:57:45Z',
-            absent: false,
-          },
-        ],
-        RPT09: [
-          {
-            name: 'Jesse',
-            cohort: 'RPT09',
-            absent: true,
-          },
-        ],
-        RPT10: [
-          {
-            name: 'Anoop',
-            cohort: 'RPT10',
-            timeJoined: '2018-10-09T01:50:00Z',
-            absent: false,
-          },
-        ],
-        RPT11: [
-          {
-            name: 'Nick',
-            cohort: 'RPT11',
-            absent: true,
-          },
-        ],
+        RPT07: {
+          present: [
+            {
+              name: 'Emily',
+              cohort: 'RPT07',
+              timeJoined: '2018-10-09T00:57:45Z',
+              absent: false,
+            },
+            {
+              name: 'Sarah',
+              cohort: 'RPT07',
+              timeJoined: '2018-10-09T00:57:45Z',
+              absent: false,
+            },
+          ],
+          absent: [],
+        },
+        RPT08: {
+          present: [
+            {
+              name: 'Robert',
+              cohort: 'RPT08',
+              timeJoined: '2018-10-09T01:57:45Z',
+              absent: false,
+            },
+          ],
+          absent: [],
+        },
+        RPT09: {
+          present: [],
+          absent: [
+            {
+              name: 'Jesse',
+              cohort: 'RPT09',
+              absent: true,
+            },
+          ],
+        },
+        RPT10: {
+          present: [
+            {
+              name: 'Anoop',
+              cohort: 'RPT10',
+              timeJoined: '2018-10-09T01:50:00Z',
+              absent: false,
+            },
+          ],
+          absent: [],
+        },
+        RPT11: {
+          present: [
+            {
+              name: 'Nick',
+              cohort: 'RPT11',
+              absent: true,
+            },
+          ],
+          absent: [],
+        },
       },
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -136,20 +147,16 @@ class App extends React.Component {
   }
 
   runAttendanceData() {
-    const { attendanceArgs, renderedCohorts } = this.state;
+    // const { attendanceArgs, renderedCohorts } = this.state;
+    // const cohortStudentInfo = Object.assign({}, renderedCohorts);
     const count = 1;
-    const cohortStudentInfo = Object.assign({}, renderedCohorts);
 
     // run runAttendanceDatas.js on the attendanceArgs
 
-    // this vvvvvv is temporary until there are real datas
-    for (let i = 0; i < attendanceArgs.length; i++) {
-      if (renderedCohorts[attendanceArgs[i]] === undefined) {
-        cohortStudentInfo[attendanceArgs[i]] = [];
-      }
-    }
-
-    this.setState({ renderedCohorts: cohortStudentInfo, renderSummaries: count });
+    this.setState({
+      /* renderedCohorts: cohortStudentInfo, */
+      renderSummaries: count,
+    });
   }
 
   render() {

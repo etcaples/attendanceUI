@@ -17,6 +17,8 @@ const TableHeading = styled.th`
 
 const StudentDataList = (props) => {
   const { students } = props;
+  const presentStudents = students.present;
+  const absentStudents = students.absent;
   return (
     <div>
       <StyledTable>
@@ -30,7 +32,10 @@ const StudentDataList = (props) => {
             </TableHeading>
           </tr>
           {
-            students.map(student => <IndivStudentInfo student={student} />)
+            absentStudents.map(student => <IndivStudentInfo student={student} key={`${student.name}-absent`} />)
+          }
+          {
+            presentStudents.map(student => <IndivStudentInfo student={student} key={`${student.name}-present`} />)
           }
         </tbody>
       </StyledTable>
@@ -39,7 +44,7 @@ const StudentDataList = (props) => {
 };
 
 StudentDataList.propTypes = {
-  students: PropTypes.arrayOf(Object).isRequired,
+  students: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default StudentDataList;
