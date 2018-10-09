@@ -4,14 +4,15 @@
 
 ## Stack
 - React
+- Axios
 - Node/Express
 - styled-components
 
 ## Service plans
-- connect API from main project to get real datas
+- update Getting Started instructions to include how to run UI with API
 - Redux for state management
 - potentially Semantic-UI, to make main app styling cohesive
-- add ability to hide the detail boxes (so that the rest of the dashboard is not cluttered)
+- add ability to actively hide the detail boxes (so that the rest of the dashboard is not cluttered)
 - add `check all` feature to checkboxes
 - do something if there's an error fetching datas
 
@@ -21,7 +22,7 @@ The attendanceUI is the face of a service intended to benignly check current stu
 It is one part of a multifaceted dashboard tool.
 
 ## Getting Started
-1. 
+1. (run attendance API)
 2. `npm install` to ensure your modules are up-to-date
 3. `npm run build` - starts both webpack bundler && server
 4. navigate to `http://127.0.0.1:3000/`

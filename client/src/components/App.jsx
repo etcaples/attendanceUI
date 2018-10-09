@@ -95,7 +95,11 @@ class App extends React.Component {
     // run runAttendanceDatas.js on the attendanceArgs
     axios.get(`http://localhost:4242/takeAttendance/${params}`)
       .then((results) => {
-        this.setState({ loading: false, renderedCohorts: results.data.results, renderSummaries: count });
+        this.setState({
+          loading: false,
+          renderedCohorts: results.data.results,
+          renderSummaries: count,
+        });
       })
       .catch((error) => {
         console.log(error);
