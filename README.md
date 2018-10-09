@@ -6,11 +6,13 @@
 - Node/Express
 
 ## Purpose
-The attendanceUI is the face of a service intended to benignly check current student attendance (no LOG).
+The attendanceUI is the face of a service intended to benignly check current student attendance (no LOG) in Hack Reactor's RPT program.
+
+It is one part of a multifacted dashboard tool.
 
 ## How it works
 
-Note: currently, there are only 5 cohorts at a time.
+Note: currently, there are only 5 cohorts at a time irl.
 
 The static cohort data is intended to be used to render checkboxes and register the status of each checkbox.
 
