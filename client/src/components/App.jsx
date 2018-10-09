@@ -16,61 +16,103 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      renderSummaries: 0,
       cohorts: [
         {
           name: 'RPT07',
           isChecked: false,
-          studentDatas: [
-            {
-              name: 'Emily',
-              timeIn: '7:34pm',
-              status: 'present',
-              // return student data in order by date
-            },
-            {
-              name: 'Sarah',
-              timeIn: null,
-              status: 'absent',
-            },
-          ],
         },
         {
           name: 'RPT08',
           isChecked: false,
-          studentDatas: [],
         },
         {
           name: 'RPT09',
           isChecked: false,
-          studentDatas: [],
         },
         {
           name: 'RPT10',
           isChecked: false,
-          studentDatas: [],
         },
         {
           name: 'RPT11',
           isChecked: false,
-          studentDatas: [],
         },
       ],
+      attendanceArgs: [],
+      renderedCohorts: {
+        RPT07: [['Emily', '7:34pm'],['Sarah', null]],
+      }
     };
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.storeCheckedCohorts = this.storeCheckedCohorts.bind(this);
+    this.runAttendanceData = this.runAttendanceData.bind(this);
   }
 
-  // when button is clicked, those cohorts are sent as arguments to runAttendance (NO LOG)
+  handleCheckboxChange(cohort) {
+    const { cohorts } = this.state;
+    const newCohortList = [].concat(cohorts);
+    for (let i = 0; i < newCohortList.length; i++) {
+      const curCohort = newCohortList[i];
+      if (curCohort.name === cohort) {
+        if (curCohort.isChecked === false) {
+          curCohort.isChecked = true;
+        } else {
+          curCohort.isChecked = false;
+        }
+      }
+    }
 
-  // then, the cohort box datas are populated
+    this.setState({ cohorts: newCohortList });
+  }
+
+  storeCheckedCohorts() {
+    const { cohorts } = this.state;
+    console.log(cohorts);
+    const count = 1;
+    const newArgs = [];
+    for (let i = 0; i < cohorts.length; i++) {
+      const curCohort = cohorts[i];
+      if (curCohort.isChecked === true) {
+        newArgs.push(curCohort.name);
+        curCohort.isChecked = false; // reset boxes to empty
+      }
+    }
+
+    this.setState({ attendanceArgs: newArgs, renderSummaries: count }, () => {
+      const { renderSummaries, attendanceArgs } = this.state;
+      console.log('renderSummaries', renderSummaries);
+      console.log('attendanceArgs', attendanceArgs);
+      // when button is clicked, those cohorts are sent as arguments to runAttendance (NO LOG)
+      // this.runAttendanceData();
+    });
+  }
+
+  runAttendanceData() {
+    const { attendanceArgs } = this.state;
+    // run runAttendanceDatas.js on the attendanceArgs
+    // when datas are returned, this.setState({renderedCohorts: datas})
+  }
 
   render() {
-    const { cohorts } = this.state;
+    const {
+      cohorts,
+      renderSummaries,
+      attendanceArgs,
+      renderedCohorts,
+    } = this.state;
     return (
       <div>
         <CheckboxListContainer>
-          <CheckboxList cohorts={cohorts} />
+          <CheckboxList
+            cohorts={cohorts}
+            handleCheckboxChange={this.handleCheckboxChange}
+            storeCheckedCohorts={this.storeCheckedCohorts}
+          />
         </CheckboxListContainer>
-        {/* want vvvvvv to render only when button is clicked */}
-        <CohortAttendanceList cohorts={cohorts} />
+        {
+          renderSummaries === 1 ? <CohortAttendanceList renderedCohorts={renderedCohorts} attendanceArgs={attendanceArgs} /> : <br />
+        }
       </div>
     );
   }
