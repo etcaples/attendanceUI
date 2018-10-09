@@ -4,8 +4,7 @@ import CheckboxList from './CheckboxList';
 import CohortAttendanceList from './CohortAttendanceList';
 
 const CheckboxListContainer = styled.div`
-  border-width: 2px;
-  border: solid navy;
+  border-bottom: 4px solid navy;
   /* temporary border details ^^^^^ */
   padding: 25px;
   text-align: center;
@@ -41,8 +40,12 @@ class App extends React.Component {
       ],
       attendanceArgs: [],
       renderedCohorts: {
-        RPT07: [['Emily', '7:34pm'],['Sarah', null]],
-      }
+        RPT07: [['Emily', '7:34pm'], ['Sarah', null]],
+        RPT08: [['Robert', null]],
+        RPT09: [['Jesse', '9:00pm']],
+        RPT10: [['Anoop', '8:59am']],
+        RPT11: [['Nick', null]],
+      },
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.storeCheckedCohorts = this.storeCheckedCohorts.bind(this);
@@ -68,8 +71,7 @@ class App extends React.Component {
 
   storeCheckedCohorts() {
     const { cohorts } = this.state;
-    console.log(cohorts);
-    const count = 1;
+    // const count = 1;
     const newArgs = [];
     for (let i = 0; i < cohorts.length; i++) {
       const curCohort = cohorts[i];
@@ -79,19 +81,28 @@ class App extends React.Component {
       }
     }
 
-    this.setState({ attendanceArgs: newArgs, renderSummaries: count }, () => {
-      const { renderSummaries, attendanceArgs } = this.state;
-      console.log('renderSummaries', renderSummaries);
-      console.log('attendanceArgs', attendanceArgs);
+    this.setState({ attendanceArgs: newArgs }, () => {
+      // const { renderSummaries, attendanceArgs } = this.state;
       // when button is clicked, those cohorts are sent as arguments to runAttendance (NO LOG)
-      // this.runAttendanceData();
+      this.runAttendanceData();
     });
   }
 
   runAttendanceData() {
-    const { attendanceArgs } = this.state;
+    const { attendanceArgs, renderedCohorts } = this.state;
+    const count = 1;
+    const cohortStudentInfo = Object.assign({}, renderedCohorts);
     // run runAttendanceDatas.js on the attendanceArgs
-    // when datas are returned, this.setState({renderedCohorts: datas})
+
+    // this vvvvvv is temporary until there are real datas
+    for (let i = 0; i < attendanceArgs.length; i++) {
+      if (renderedCohorts[attendanceArgs[i]] === undefined) {
+        // console.log(renderedCohorts)
+        cohortStudentInfo[attendanceArgs[i]] = [];
+      }
+    }
+
+    this.setState({ renderedCohorts: cohortStudentInfo, renderSummaries: count });
   }
 
   render() {
@@ -101,6 +112,7 @@ class App extends React.Component {
       attendanceArgs,
       renderedCohorts,
     } = this.state;
+
     return (
       <div>
         <CheckboxListContainer>
@@ -111,7 +123,11 @@ class App extends React.Component {
           />
         </CheckboxListContainer>
         {
-          renderSummaries === 1 ? <CohortAttendanceList renderedCohorts={renderedCohorts} attendanceArgs={attendanceArgs} /> : <br />
+          renderSummaries === 1 ? (
+            <CohortAttendanceList
+              renderedCohorts={renderedCohorts}
+              attendanceArgs={attendanceArgs}
+            />) : <br />
         }
       </div>
     );

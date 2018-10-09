@@ -9,7 +9,7 @@ const StyledTable = styled.table`
 `;
 
 const TableHeading = styled.th`
-  border: 2px solid pink;
+  border: 2px solid navy;
   text-align: right;
   font-size: 20px;
   padding: 5px;
@@ -39,7 +39,7 @@ const StudentDataList = (props) => {
 };
 
 StudentDataList.propTypes = {
-  students: PropTypes.arrayOf(Object).isRequired,
+  students: PropTypes.arrayOf(Array).isRequired,
 };
 
 export default StudentDataList;

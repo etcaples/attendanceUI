@@ -4,10 +4,6 @@ import styled from 'styled-components';
 import CohortBox from './CohortBox';
 
 const CohortBoxContainer = styled.div`
-  border: 2px solid green;
-  /* temporary border details ^^^^^ */
-  /* want table of names to be centered */
-  /* want heading to be centered */
   padding: 25px;
   display: flex;
   align-items: flex-start;
@@ -16,18 +12,20 @@ const CohortBoxContainer = styled.div`
 `;
 
 const CohortAttendanceList = (props) => {
-  const { cohorts } = props;
+  const { renderedCohorts, attendanceArgs } = props;
+  console.log(renderedCohorts);
   return (
     <CohortBoxContainer>
       {
-        cohorts.map(cohort => (<CohortBox cohort={cohort} key={`${cohort.name} + "-box"`} />))
-          }
+        attendanceArgs.map(cohort => (<CohortBox cohort={cohort} students={renderedCohorts[cohort]} key={`${cohort} + "-box"`} />))
+      }
     </CohortBoxContainer>
   );
 };
 
 CohortAttendanceList.propTypes = {
-  cohorts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  renderedCohorts: PropTypes.instanceOf(Object).isRequired,
+  attendanceArgs: PropTypes.arrayOf(String).isRequired,
 };
 
 export default CohortAttendanceList;
