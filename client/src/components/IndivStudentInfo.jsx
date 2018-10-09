@@ -9,15 +9,23 @@ const TableCell = styled.td`
   padding: 5px;
 `;
 
+// RPT07/RPT08/RPT10
+
 const IndivStudentInfo = (props) => {
   const { student } = props;
+  let timeIn = student.timeJoined;
+  if (student.timeJoined !== undefined) {
+    timeIn = new Date(student.timeJoined);
+    timeIn = timeIn.toLocaleTimeString('en-US');
+  }
+
   return (
     <tr>
       <TableCell>
-        {student[0]}
+        {student.name}
       </TableCell>
       <TableCell>
-        {student[1] || 'Absent'}
+        {timeIn || 'Absent'}
       </TableCell>
     </tr>
   );

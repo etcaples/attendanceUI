@@ -16,6 +16,10 @@ const TempMessage = styled.div`
   font-size: 25px;
 `;
 
+// real data shape:
+// {name, cohort, timeJoined, absent}
+// when a student is absent, it says absent: true, and there is no timeJoined property
+
 class App extends React.Component {
   constructor() {
     super();
@@ -45,11 +49,50 @@ class App extends React.Component {
       ],
       attendanceArgs: [],
       renderedCohorts: {
-        RPT07: [['Emily', '7:34pm'], ['Sarah', null]],
-        RPT08: [['Robert', null]],
-        RPT09: [['Jesse', '9:00pm']],
-        RPT10: [['Anoop', '8:59am']],
-        RPT11: [['Nick', null]],
+        RPT07: [
+          {
+            name: 'Emily',
+            cohort: 'RPT07',
+            timeJoined: '2018-10-09T00:57:45Z',
+            absent: false,
+          },
+          {
+            name: 'Sarah',
+            cohort: 'RPT07',
+            timeJoined: '2018-10-09T00:57:45Z',
+            absent: false,
+          },
+        ],
+        RPT08: [
+          {
+            name: 'Robert',
+            cohort: 'RPT08',
+            timeJoined: '2018-10-09T01:57:45Z',
+            absent: false,
+          },
+        ],
+        RPT09: [
+          {
+            name: 'Jesse',
+            cohort: 'RPT09',
+            absent: true,
+          },
+        ],
+        RPT10: [
+          {
+            name: 'Anoop',
+            cohort: 'RPT10',
+            timeJoined: '2018-10-09T01:50:00Z',
+            absent: false,
+          },
+        ],
+        RPT11: [
+          {
+            name: 'Nick',
+            cohort: 'RPT11',
+            absent: true,
+          },
+        ],
       },
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);

@@ -30,7 +30,7 @@ const CohortBox = (props) => {
 
 CohortBox.propTypes = {
   cohort: PropTypes.string.isRequired,
-  students: PropTypes.arrayOf(Array).isRequired,
+  students: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default CohortBox;

@@ -39,7 +39,7 @@ const StudentDataList = (props) => {
 };
 
 StudentDataList.propTypes = {
-  students: PropTypes.arrayOf(Array).isRequired,
+  students: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default StudentDataList;
