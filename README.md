@@ -1,5 +1,7 @@
 # attendanceUI
 
+![alt-text](http://g.recordit.co/oHYiuwjw27.gif)
+
 ## Stack
 - React
 - Node/Express
