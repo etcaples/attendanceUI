@@ -13,7 +13,7 @@ const TableCell = styled.td`
 
 const IndivStudentInfo = (props) => {
   const { student } = props;
-  let timeIn = student.timeJoined;
+  let timeIn = student.timeJoined || 'Absent';
   if (student.timeJoined !== undefined) {
     timeIn = new Date(student.timeJoined);
     timeIn = timeIn.toLocaleTimeString('en-US');
@@ -25,7 +25,7 @@ const IndivStudentInfo = (props) => {
         {student.name}
       </TableCell>
       <TableCell>
-        {timeIn || 'Absent'}
+        {timeIn}
       </TableCell>
     </tr>
   );
