@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import CheckboxList from './CheckboxList';
 import CohortAttendanceList from './CohortAttendanceList';
+import LoadingSquare from './LoadingSquare';
 
 const CheckboxListContainer = styled.div`
   border-bottom: 4px solid navy;
@@ -21,6 +23,7 @@ class App extends React.Component {
     super();
     this.state = {
       renderSummaries: 0,
+      loading: false,
       cohorts: [
         {
           name: 'RPT07',
@@ -44,67 +47,7 @@ class App extends React.Component {
         },
       ],
       attendanceArgs: [],
-      renderedCohorts: {
-        RPT07: {
-          present: [
-            {
-              name: 'Emily',
-              cohort: 'RPT07',
-              timeJoined: '2018-10-09T00:57:45Z',
-              absent: false,
-            },
-          ],
-          absent: [
-            {
-              name: 'Sarah',
-              cohort: 'RPT07',
-              absent: true,
-            },
-          ],
-        },
-        RPT08: {
-          present: [
-            {
-              name: 'Robert',
-              cohort: 'RPT08',
-              timeJoined: '2018-10-09T01:57:45Z',
-              absent: false,
-            },
-          ],
-          absent: [],
-        },
-        RPT09: {
-          present: [],
-          absent: [
-            {
-              name: 'Jesse',
-              cohort: 'RPT09',
-              absent: true,
-            },
-          ],
-        },
-        RPT10: {
-          present: [
-            {
-              name: 'Anoop',
-              cohort: 'RPT10',
-              timeJoined: '2018-10-09T01:50:00Z',
-              absent: false,
-            },
-          ],
-          absent: [],
-        },
-        RPT11: {
-          present: [
-            {
-              name: 'Nick',
-              cohort: 'RPT11',
-              absent: true,
-            },
-          ],
-          absent: [],
-        },
-      },
+      renderedCohorts: {},
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.storeCheckedCohorts = this.storeCheckedCohorts.bind(this);
@@ -139,24 +82,25 @@ class App extends React.Component {
       }
     }
 
-    this.setState({ attendanceArgs: newArgs }, () => {
-      // const { renderSummaries, attendanceArgs } = this.state;
+    this.setState({ renderSummaries: 0, attendanceArgs: newArgs, loading: true }, () => {
       // when button is clicked, those cohorts are sent as arguments to runAttendance (NO LOG)
       this.runAttendanceData();
     });
   }
 
   runAttendanceData() {
-    // const { attendanceArgs, renderedCohorts } = this.state;
-    // const cohortStudentInfo = Object.assign({}, renderedCohorts);
+    const { attendanceArgs } = this.state;
     const count = 1;
-
+    const params = attendanceArgs.join('+');
     // run runAttendanceDatas.js on the attendanceArgs
-
-    this.setState({
-      /* renderedCohorts: cohortStudentInfo, */
-      renderSummaries: count,
-    });
+    axios.get(`http://localhost:4242/takeAttendance/${params}`)
+      .then((results) => {
+        this.setState({ loading: false, renderedCohorts: results.data.results, renderSummaries: count });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ loading: false });
+      });
   }
 
   render() {
@@ -165,6 +109,7 @@ class App extends React.Component {
       renderSummaries,
       attendanceArgs,
       renderedCohorts,
+      loading,
     } = this.state;
 
     return (
@@ -182,6 +127,11 @@ class App extends React.Component {
               renderedCohorts={renderedCohorts}
               attendanceArgs={attendanceArgs}
             />) : <TempMessage>(Datas take about 12 seconds to load...)</TempMessage>
+        }
+        {
+          loading ? (
+            <LoadingSquare />
+          ) : <div />
         }
       </div>
     );
